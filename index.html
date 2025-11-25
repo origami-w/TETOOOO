@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>tetoo</title>
+</head>
+<body>
+    <h1 id="tetoo">TETOO</h1>
+    <video autoplay loop  muted="false" id="bgVideo">
+        <source src="teto teto teto teto teto teto teto teto teto teto teto teto teto teto teto teto teto teto teto teto - Kasane Teto (1080p, h264).mp4" type="video/mp4">
+    </video>
+    <button id="toggleSound">🔊 Unmute</button>
+    <audio id="sfx1">
+        <source src="Bonk Sound Effect.mp3" type="audio/mp3">
+     </audio>
+    <script>
+        const video = document.getElementById("bgVideo");
+        const btn = document.getElementById("toggleSound");
+
+        btn.addEventListener("click", () => {
+            if (video.muted) {
+                video.muted = false;
+                video.volume = 1.0;
+                btn.textContent = "🔇 Mute";
+            } else {
+                video.muted = true;
+                btn.textContent = "🔊 Unmute";
+            }
+
+        });
+        document.addEventListener("click", () => {
+            const sound = document.getElementById("sfx1").cloneNode(true);
+            sound.play();
+        });
+
+        document.addEventListener("click", (e) => {
+            const img = document.createElement("img");
+            img.src = "teto2.png";       
+            img.className = "teto-img";
+            img.style.left = e.pageX - 40 + "px"; 
+            img.style.top = e.pageY - 40 + "px";
+
+            document.body.appendChild(img);
+
+    // Remove after animation finishes
+            setTimeout(() => {
+                img.remove();
+            }, 600); // matches animation duration
+        });
+    </script>
+</body>
+</html>
