@@ -19,11 +19,30 @@
         <img id="score" src="teto3.png" >
         <span id="scoreText">0</span>
     </div>
+    <button id="shopToggle">></button>
+    <div id="shopPanel">
+        <h1 id="shopTitle"><u>TETO SHOP</u></h1>
+        <p>soon...</p>
+    </div>
     <script>
-        let score = 0;
         const scoreText = document.getElementById("scoreText");
+
+        let score = parseInt(localStorage.getItem("score")) || 0;
+        scoreText.textContent = score;
+
         const video = document.getElementById("bgVideo");
         const btn = document.getElementById("toggleSound");
+        const shopToggle = document.getElementById("shopToggle");
+        const shopPanel = document.getElementById("shopPanel");
+
+        shopToggle.addEventListener("click", () => {
+            shopPanel.classList.toggle("open");
+            shopToggle.classList.toggle("open");
+
+            shopToggle.textContent = shopPanel.classList.contains("open") ? "<" : ">" ;
+
+
+        });
 
         btn.addEventListener("click", () => {
             if (video.muted) {
@@ -49,6 +68,7 @@
             img.style.top = e.pageY - 40 + "px";
             score++;
             scoreText.textContent = score;
+            localStorage.setItem("score", score);
 
             document.body.appendChild(img);
 
@@ -57,7 +77,7 @@
                 img.remove();
             }, 600); // matches animation duration
         });
-
+        
     </script>
 </body>
 </html>
