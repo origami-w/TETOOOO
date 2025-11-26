@@ -7,6 +7,8 @@
 	transform : translate(-50%, -50%) scale(0.8);
 	object-fit : cover;
 	z-index : -1;
+    user-select: none;
+    pointer-events: none;
 }
 #tetoo {
     text-align: center;
@@ -33,7 +35,12 @@
 		border: none;
 		border-radius: 8px;
 		cursor: pointer;
-		}
+
+        user-select: none;    
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+     
 .teto-img {
     position: absolute;
     width: 80px;
@@ -48,3 +55,33 @@
     70% { transform: scale(1) translateY(0); }
     100% { transform: scale(0.7) translateY(20px); opacity: 0; }
 }
+
+#scoreMain {
+    position: fixed;
+    top: 20px;
+    left: 20p;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+    pointer-events: none;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 12px;
+    
+
+}
+#score {
+    
+    width: 60px;
+    user-select: none;
+}
+#scoreText {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    pointer-events: none;
+}
+
+

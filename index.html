@@ -14,8 +14,14 @@
     <button id="toggleSound">🔊 Unmute</button>
     <audio id="sfx1">
         <source src="Bonk Sound Effect.mp3" type="audio/mp3">
-     </audio>
+    </audio>
+    <div id="scoreMain">
+        <img id="score" src="teto3.png" >
+        <span id="scoreText">0</span>
+    </div>
     <script>
+        let score = 0;
+        const scoreText = document.getElementById("scoreText");
         const video = document.getElementById("bgVideo");
         const btn = document.getElementById("toggleSound");
 
@@ -41,6 +47,8 @@
             img.className = "teto-img";
             img.style.left = e.pageX - 40 + "px"; 
             img.style.top = e.pageY - 40 + "px";
+            score++;
+            scoreText.textContent = score;
 
             document.body.appendChild(img);
 
@@ -49,6 +57,7 @@
                 img.remove();
             }, 600); // matches animation duration
         });
+
     </script>
 </body>
 </html>
