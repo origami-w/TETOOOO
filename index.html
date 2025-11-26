@@ -24,9 +24,23 @@
         <h1 id="shopTitle"><u>TETO SHOP</u></h1>
         <p>soon...</p>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAIVy9iBeJB58galZfK2gYmjKYqBshVcBc",
+            authDomain: "teto-clicker.firebaseapp.com",
+            databaseURL: "https://teto-clicker-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "teto-clicker",
+            storageBucket: "teto-clicker.firebasestorage.app",
+            messagingSenderId: "162094409222",
+            appId: "1:162094409222:web:5622b430acee77e2800587"
+        };
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+    </script>
     <script>
         const scoreText = document.getElementById("scoreText");
-
         let score = parseInt(localStorage.getItem("score")) || 0;
         scoreText.textContent = score;
 
@@ -71,6 +85,9 @@
             localStorage.setItem("score", score);
 
             document.body.appendChild(img);
+            firebase.database().ref("leaderboard/" + "player1").set({
+                score: score
+            });
 
     // Remove after animation finishes
             setTimeout(() => {
@@ -79,5 +96,7 @@
         });
         
     </script>
+    
+
 </body>
 </html>
