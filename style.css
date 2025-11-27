@@ -109,7 +109,6 @@
     transition: left 0.3s ease;
     border-radius: 20px;
     z-index: 1;
-
 }
 #shopPanel.open {
     left: 0;
@@ -117,5 +116,101 @@
 #shopToggle.open {
     left: 300px;
 }
+#shopTitle {
+    user-select: none;
+    pointer-events: none;
+}
+#setting {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    padding: 6px 6px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    user-select: none;
+    z-index: 1;
+    background: rgba(0,0,0,0.3);
+}
+#setPanel {
+    background: rgba(0,0,0,0.3);
+    position: fixed;
+    top: -120px;
+    right: 70px;
+    padding: 0 10px 8px;
+    width: 300px;
+    height: 90px;
+    border-radius: 10px;
+    transition: top 0.3s ease;
+    text-align: center;
+    z-index: 1;
 
 
+}
+#setPanel.open {
+    animation: open 0.5s forwards;
+}
+#setPanel.close {
+    animation: close 0.5s forwards;
+}
+@keyframes open {
+    0% {top: -120px;}
+    50% {top: 30px;}
+    100% {top: 20px;}
+}
+@keyframes close {
+    0% {top: 20px;}
+    50% {top: 30px;}
+    100% {top: -120px;}
+}
+#settit {
+    user-select: none;
+    margin-top: 10px;
+}
+#reset {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    user-select: none;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: -20px;
+    margin-right: 150px;
+    padding: 4px 6px 10px;
+    gap: 8px;
+    color: white;
+    border: none;
+    font-size: 12px;
+    border-radius: 6px;
+    
+}
+#resetPop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+#resetPop.hide {
+    display: none;
+}
+#popPanel {
+    background: #222;
+    padding: 20px 30px;
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+}
+#popPanel button {
+    margin: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

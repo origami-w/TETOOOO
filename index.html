@@ -24,6 +24,19 @@
         <h1 id="shopTitle"><u>TETO SHOP</u></h1>
         <p>soon...</p>
     </div>
+    <div id="setPanel">
+        <h4 id="settit">TETO SETTING</h4>
+        <button id="reset">RESET<img src="teto3.png" width="35px"></button>
+    </div>
+    <button id="setting">⚙</button>
+    <div id="resetPop" class="hide">
+        <div id="popPanel">
+            <p>this will reset your progress, are you sure?</p>
+            <button id="yes">YES</button>
+            <button id="no">NUH UH</button>
+        </div>
+    </div>
+    
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
     <script>
@@ -40,14 +53,30 @@
         const db = firebase.database();
     </script>
     <script>
+        const reset = document.getElementById("reset");
         const scoreText = document.getElementById("scoreText");
         let score = parseInt(localStorage.getItem("score")) || 0;
         scoreText.textContent = score;
-
         const video = document.getElementById("bgVideo");
         const btn = document.getElementById("toggleSound");
         const shopToggle = document.getElementById("shopToggle");
         const shopPanel = document.getElementById("shopPanel");
+        const toggleSetting = document.getElementById("setting");
+        const setpat = document.getElementById("setPanel");
+        const resetpop = document.getElementById("resetPop")
+
+        
+
+        toggleSetting.addEventListener("click", () => {
+            if(!setpat.classList.contains("open")) {
+                setpat.classList.remove("close");
+                setpat.classList.add("open");
+            } else {
+                setpat.classList.remove("open");
+                setpat.classList.add("close");
+            }
+            toggleSetting.textContent = setpat.classList.contains("open") ? "x" : "⚙" ;
+        });
 
         shopToggle.addEventListener("click", () => {
             shopPanel.classList.toggle("open");
@@ -75,6 +104,7 @@
         });
 
         document.addEventListener("click", (e) => {
+            if (e.target.closest("#reset")) return;
             const img = document.createElement("img");
             img.src = "teto2.png";       
             img.className = "teto-img";
@@ -94,9 +124,29 @@
                 img.remove();
             }, 600); // matches animation duration
         });
-        
+        reset.addEventListener("click", () => {
+            score = 0;
+            scoreText.textContent = 0;
+            localStorage.setItem("score", 0);
+        });
+        reset.addEventListener("click", (e) => {
+            e.stopPropagation();
+            resetpop.classList.remove("hide");
+        });
+        document.getElementById("yes").addEventListener("click", (e) => {
+            e.stopPropagation();
+            score = 0;
+            scoreText.textContent = 0;
+            localStorage.setItem("score", 0);
+            resetpop.classList.add("hide");
+
+        });
+        document.getElementById("no").addEventListener("click", (e) => {
+            e.stopPropagation();
+            resetpop.classList.add("hide");
+        });
     </script>
     
 
 </body>
-</html>
+</html> 
