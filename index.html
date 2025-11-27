@@ -124,11 +124,7 @@
                 img.remove();
             }, 600); // matches animation duration
         });
-        reset.addEventListener("click", () => {
-            score = 0;
-            scoreText.textContent = 0;
-            localStorage.setItem("score", 0);
-        });
+    
         reset.addEventListener("click", (e) => {
             e.stopPropagation();
             resetpop.classList.remove("hide");
