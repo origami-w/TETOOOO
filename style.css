@@ -11,6 +11,8 @@
     pointer-events: none;
 }
 #tetoo {
+    position: fixed;
+    margin-left: 45%;
     text-align: center;
     margin-top: 170px;
     font-size: 40px;
