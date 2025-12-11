@@ -11,15 +11,24 @@
     pointer-events: none;
 }
 #tetoo {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;   
     position: fixed;
-    margin-left: 45%;
     text-align: center;
-    margin-top: 170px;
+    top: 170px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 40px;
     animation: colorchange 3s infinite;
     user-select: none;
     pointer-events: none;
+    
+    
 }
+
+
 
 @keyframes colorchange {
     0%   { color: red; }
